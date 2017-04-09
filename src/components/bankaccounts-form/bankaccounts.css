@@ -1,0 +1,18 @@
+.row.bankaccount-form {
+    margin-top: -20px;
+}
+
+.btn-yellow {
+    background-color: #f1a41a;
+    color: #f4f4f4;
+}
+
+.btn-yellow:hover {
+    background-color: #f1a41a;
+    color: #ffffff;
+}
+
+.btn-secundary {
+    background-color: #e0e1e3;
+    color: #6b6559;
+}

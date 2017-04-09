@@ -1,0 +1,138 @@
+<html>
+    <head>
+         <link type="text/css" rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css' />
+        <style>
+            /******** Example with CSS and JS  *********/
+            .collapsible {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .collapsible .collapsible__toggle {
+                cursor: pointer;
+            }
+
+            .collapsible .collapsible__content.hide {
+                display: none;
+            }
+
+            .collapsible .collapsible__content.hideAnimated {
+                animation-name: hideOut;
+                animation-duration: 1s;
+                animation-fill-mode: both;
+            }
+
+            @keyframes hideOut {
+                from {
+                    opacity: 1;
+                    font-size:16px;
+                }
+
+                to {
+                    opacity: 0;
+                    font-size:0px;
+                    transform: translate3d(0, 100%, 0);
+                }
+            }
+            /******** Example with CSS and JS END *********/
+
+            /******** Example with CSS Only  *********/
+            .collapsible2 {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .collapsible2 .collapsible2__toggle {
+                cursor: pointer;
+            }
+
+            .collapsible2 .collapsible2__content {
+                opacity: 0;
+                animation-name: hideOut;
+                animation-duration: 1s;
+                animation-fill-mode: both;
+            }
+
+            .collapsible2 .collapsible2__toggle:hover + 
+            .collapsible2__content {
+                animation-name: showOut;
+                animation-duration: 1s;
+                animation-fill-mode: both;
+            }
+
+            @keyframes showOut {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+            /******** Example with CSS Only  *********/
+        </style>
+    </head>
+    <body>
+
+        <div class="collapsible">
+            <button class="collapsible__toggle">
+                Show me the content
+            </button>
+            <div class="collapsible__content">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ante id mattis tempor. Suspendisse eu nisi dictum, venenatis diam vel, faucibus magna. Sed non purus nibh. Vivamus ultricies non tellus nec pharetra. Proin sollicitudin tincidunt egestas. Sed vitae elementum risus. Sed ac ultrices nisl, eu egestas augue. Donec vel tortor eu justo laoreet eleifend. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed venenatis diam non sapien vulputate, sed porttitor nunc egestas. Ut placerat, arcu ut sodales tincidunt, libero ipsum viverra odio, et suscipit leo felis a velit. Quisque sed metus interdum, lacinia massa vitae, ultrices nulla. Aenean finibus tincidunt lobortis. Quisque et mauris nec ex luctus cursus. Phasellus sem tortor, fermentum quis urna ac, suscipit scelerisque mauris.
+                </p>
+                <p>
+                    Suspendisse potenti. Nulla vestibulum imperdiet commodo. Ut id tortor pulvinar, sodales lorem at, volutpat neque. Quisque tempor arcu arcu. Vivamus porttitor sit amet metus ultrices ullamcorper. Nulla rutrum cursus aliquet. Praesent sem quam, imperdiet eu mi non, aliquam sagittis purus. Sed interdum non libero nec placerat. Maecenas nec blandit ex, vel eleifend ligula. Aliquam sem massa, congue non massa sit amet, porttitor sollicitudin mauris. Integer lobortis laoreet justo id luctus. Aliquam quis commodo mi, sit amet accumsan ante. Cras in vulputate nisl.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="collapsible2">
+            <button class="collapsible2__toggle">
+                Show me the content
+            </button>
+            <div class="collapsible2__content">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius ante id mattis tempor. Suspendisse eu nisi dictum, venenatis diam vel, faucibus magna. Sed non purus nibh. Vivamus ultricies non tellus nec pharetra. Proin sollicitudin tincidunt egestas. Sed vitae elementum risus. Sed ac ultrices nisl, eu egestas augue. Donec vel tortor eu justo laoreet eleifend. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed venenatis diam non sapien vulputate, sed porttitor nunc egestas. Ut placerat, arcu ut sodales tincidunt, libero ipsum viverra odio, et suscipit leo felis a velit. Quisque sed metus interdum, lacinia massa vitae, ultrices nulla. Aenean finibus tincidunt lobortis. Quisque et mauris nec ex luctus cursus. Phasellus sem tortor, fermentum quis urna ac, suscipit scelerisque mauris.
+                </p>
+                <p>
+                    Suspendisse potenti. Nulla vestibulum imperdiet commodo. Ut id tortor pulvinar, sodales lorem at, volutpat neque. Quisque tempor arcu arcu. Vivamus porttitor sit amet metus ultrices ullamcorper. Nulla rutrum cursus aliquet. Praesent sem quam, imperdiet eu mi non, aliquam sagittis purus. Sed interdum non libero nec placerat. Maecenas nec blandit ex, vel eleifend ligula. Aliquam sem massa, congue non massa sit amet, porttitor sollicitudin mauris. Integer lobortis laoreet justo id luctus. Aliquam quis commodo mi, sit amet accumsan ante. Cras in vulputate nisl.
+                </p>
+            </div>
+        </div>
+        <script type='text/javascript' >
+            function collap(query, params) {
+                var el = document.querySelector(query)
+                var _animations = [
+                    'bounceIn',
+                    'bounceInDown',
+                    'bounceInLeft',
+                    'bounceInRight',
+                    'bounceInUp'
+                ]
+                var getAnimation = function() {
+                    var random = Math.ceil(Math.random()*_animations.length)
+                    return ' animated ' + _animations[random]
+                }
+                
+                if(!params.content || !params.toggle) {
+                    console.log('ERROR: Function needs the selectors for Content and Toggle button')
+                    return null
+                }
+                //hide by default the content
+                el.querySelector("."+params.content).className += ' hide';
+                btn = document.querySelector("."+params.toggle)
+                btn.addEventListener('click', function(){
+                    var content = this.parentNode.querySelector("."+params.content)
+                    content.className = params.content + 
+                    (content.className.indexOf('hide') > -1 ? getAnimation() : ' hideAnimated')
+                })
+            }
+
+            collap('.collapsible', {content:'collapsible__content', toggle:'collapsible__toggle'})
+
+        </script>
+    </body>
+</html>

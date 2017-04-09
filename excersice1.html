@@ -1,0 +1,84 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script type='text/javascript' >
+            /************************* EXAMPLE 1 ***************************/
+            /************* Function to sort by active property *************/
+            function sortByStatus(userA, userB) {
+                if(userA.active !== userB.active) {
+                    return userA.active ? 1 : -1
+                }
+                return 0
+            }
+
+            function usersComparator(userA, userB) {
+                if(userA.registrationDate !== userB.registrationDate) {
+                    return userA.registrationDate - userB.registrationDate;
+                }
+                return userA.requestedAmount - userB.requestedAmount;
+            }
+
+            function sortUsers(users) {
+                return users.sort(usersComparator).sort(sortByStatus);
+            }
+            /************************* EXAMPLE 1 END ************************/
+
+            /************************* EXAMPLE 2 ***************************/
+            /********************* Function to sort ************************/
+            function sortAll(userA, userB) {
+                if(userA.active !== userB.active) {
+                    return userA.active ? 1 : -1
+                }
+                if(userA.registrationDate !== userB.registrationDate) {
+                    return userA.registrationDate - userB.registrationDate;
+                }
+                return userA.requestedAmount - userB.requestedAmount;
+            }
+
+            function sortUsersV2(users) {
+                return users.sort(sortAll);
+            }
+            /************************* EXAMPLE 2 END ************************/
+
+            /****** DATA TO SORT ********/
+            var data = [
+                {id: 2, active: false, registrationDate: new Date(2016, 11, 1), requestedAmount: 10000},
+                {id: 3, active: true,  registrationDate: new Date(2016, 10, 14), requestedAmount: 5000},
+                {id: 5, active: true,  registrationDate: new Date(2017, 0, 2), requestedAmount: 5000},
+                {id: 1, active: false, registrationDate: new Date(2016, 10, 15), requestedAmount: 5000},
+                {id: 4, active: true,  registrationDate: new Date(2016, 10, 14), requestedAmount: 5500},
+            ]
+
+            /******* PERFORMANCE ********/
+            console.time("OptionA")
+            var temp = data.slice()
+            var res = sortUsers(temp)
+            console.timeEnd("OptionA")
+
+            console.time("OptionB")
+            var tempB = data.slice()
+            var other = sortUsersV2(tempB)
+            console.timeEnd("OptionB")
+            /******* END PERFORMANCE ********/
+
+            /******* SHOW RESULTS ***********/
+            function showResult(res, title) {
+                var output = '<h1>' + title + '</h1>'
+                output += '<ol>'
+                res.forEach(function(item){
+                    output += '<li>[' + item.id + ', ' + item.active + ', ' + item.registrationDate + ', ' +
+                                item.requestedAmount + ']</li>'
+                })
+
+                output += '</ol>'
+                document.write(output)
+            }
+
+            showResult(res, 'Example 1')
+            document.write('<br/><br/>')
+            showResult(other, 'Example 2')
+            /******* END SHOW RESULTS ********/
+        </script>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+.form-group {
+    padding: 10px 40px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    padding: 5px;
+    display: block;
+    margin: auto;
+}
+
+.error:empty {
+    display: none;
+}
+
+.account-error {
+    font-size: 15px;
+}
+
+
