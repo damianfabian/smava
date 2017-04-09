@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 var ExtractText = require('extract-text-webpack-plugin')
 var HtmlPlugin = require('html-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var resolve = function (dir) {
     return path.resolve(__dirname, dir)
