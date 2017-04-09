@@ -23,3 +23,14 @@ To run the app open a console, go to the project folder and run this command:
 `yarn docker`
 
 You will be available to open your browser at localhost:8080
+
+### Missing Stuff
+
+I did not put everything what I want to, but I guess with 3 more hours I would be available to perform the next tasks:
+
+- Add validation message for the Bank Account's fields
+- Add Unit Tests (Mocha, Chai)
+- Add Eslint
+- Add Coverage (Istanbul)
+
+

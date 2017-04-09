@@ -14,7 +14,8 @@
     "docker-build": "docker build -t smava-test .",
     "docker-start": "docker run -p 8080:8080 --name smava-test smava-test",
     "docker-stop": "docker stop smava-test . || true",
-    "docker": "yarn docker-build && yarn docker-stop && yarn docker-start",
+    "docker-rm": "docker rm smava-test || true",
+    "docker": "yarn install && yarn docker-stop && yarn docker-rm && yarn docker-build && yarn docker-start",
     "dev": "webpack-dev-server --progress --colors"
   },
   "devDependencies": {
